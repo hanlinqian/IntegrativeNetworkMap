@@ -138,7 +138,7 @@ for (my $c=1;$c<=340479;$c++){
 	print "\n";
 }
 ```  
-
+  
 step10: transfer read counts to TPM
 ```perl
 use strict;
