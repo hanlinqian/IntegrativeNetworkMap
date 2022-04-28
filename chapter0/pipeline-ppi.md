@@ -6,7 +6,8 @@
 `seqkit fq2fa test.fastq.gz ‐w 0 >test.fa`
 
 ##### step3: Distinguish sequences from AD and BD vector according to ATTL sequence  
-`module load BLAST+/2.6.0;  blastn ‐db attl_blastindex/attl_db ‐query test.fa.fa ‐out testattlblast.txt ‐evalue 1.0e‐4 ‐outfmt 6;  perl attl.pl test‐attlblast.txt test.fa BD‐test.fa AD‐test.fa`
+`module load BLAST+/2.6.0;  blastn ‐db attl_blastindex/attl_db ‐query test.fa.fa ‐out testattlblast.txt ‐evalue 1.0e‐4 ‐outfmt 6;`  
+`perl attl.pl test‐attlblast.txt test.fa BD‐test.fa AD‐test.fa  ##attl.pl is in the code directory`
 
 ##### step4: Sequences were mapped to CDS region  
 `module load BLAST+/2.6.0; makeblastdb ‐in Zea_mays.B73_RefGen_v4.cds.all.fa ‐dbtype nucl ‐parse_seqids ‐out blast‐v4.cds.all.fa;`  
