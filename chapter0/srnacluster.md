@@ -92,4 +92,90 @@ step8: merge adjacent bed to cluster
 step9: calculate read counts in each cluster  
 `bedtools intersect -a 03mergeuniq.bed -b 03mergeuniq-6x-gap300.bed -wb >cluster-tissues-read.txt;`  
 `bedtools intersect -a 03mergeuniq.bed -b 03mergeuniq-6x.bed -wb >highcoverage.bed;`
+`perl count.pl >cluster-readcount.txt`  
+```perl
+#this is count.pl;
+use strict;
+use warnings;
+my %hb; my %node;
+open IN,"<highcoverage.bed";
+while (my $str=<IN>){
+	chomp $str;
+	my @arr=split /\t/,$str;
+	$node{$arr[3]}=1;
+}
+close IN;
+open IN,"<cluster-tissues-read.txt";
+while (my $str=<IN>){
+	chomp $str;
+	my @arr=split /\t/,$str;
+	my @arr1=split /-/,$arr[3];
+	if (exists $node{$arr[3]}){
+		if (!exists $hb{$arr[10]}{$arr1[0]}){
+			$hb{$arr[10]}{$arr1[0]}=$arr1[2];
+		}else{
+			$hb{$arr[10]}{$arr1[0]}=$hb{$arr[10]}{$arr1[0]}+$arr1[2];
+		}
+	}
+}
+close IN;
+print "gene";
+for (my $i=1;$i<=54;$i++){
+	print "\tt$i";
+}
+print "\n";
+for (my $c=1;$c<=340479;$c++){
+	print "cluster$c";
+	my $gene="cluster$c";
+	for (my $i=1;$i<=54;$i++){
+		my $tissues="t$i";
+		if (exists $hb{$gene}{$tissues}){
+			print "\t$hb{$gene}{$tissues}";
+		}else{
+			print "\t0";
+		}
+	}
+	print "\n";
+}
+```
 
+step10: transfer read counts to TPM
+```perl
+use strict;
+use warnings;
+my %hb; my %node;
+open IN,"<03mergeuniq-54tissues-6x-gap300.bed";
+while (my $str=<IN>){
+	chomp $str;
+	my @arr=split /\t/,$str;
+	my $len=$arr[2]-$arr[1]+1;
+	$hb{$arr[3]}=$len;
+}
+close IN;
+open IN,"<$ARGV[0]";
+my $str=<IN>;
+print "$str";
+chomp $str;
+my @id=split /\t/,$str;
+while ($str=<IN>){
+	%node=();
+	chomp $str;
+	my @arr=split /\t/,$str;
+	my $sum=0; my $n=1;
+	while ($id[$n]){
+		$node{$n}=$arr[$n]/$hb{$id[$n]};
+		$sum=$sum+$node{$n};
+		$n++;
+	}
+	$n=1;
+	print "$arr[0]";
+	while ($id[$n]){
+		my $tpm=$node{$n}/$sum*100000;
+		$tpm=sprintf "%.2f",$tpm;
+		print "\t$tpm";
+		$n++;
+	}
+	print "\n";
+}
+close IN;
+```
