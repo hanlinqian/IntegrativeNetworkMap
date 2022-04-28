@@ -1,4 +1,4 @@
-#### Raw data was submitted to GSA(https://ngdc.cncb.ac.cn/gsa/), the accession was CRA006221. Final file was named 21+21srna.tpm in the data directory. The processing pipeline is as follows:
+#### Raw data was submitted to GSA(https://ngdc.cncb.ac.cn/gsa/), the accession was CRA006221. Final file was named 21+21srnacluster.tpm in the data directory. The processing pipeline is as follows:
 ##### step1: quality control and remove adapter  
 `module load cutadapt/1.9.1;`  
 `cutadapt -q 20,20 -o out.fq.gz input.fq.gz;  cutadapt -a AGTCGGAGGCCAAGCGGTCTTAGGAA -o out-rmada.fq.gz --discard-untrimmed -e 0.05 -O 14 --no-indels out.fq.gz;`  
@@ -32,4 +32,4 @@
 `perl srnacount.pl >cluster-readcount.txt  ##srnacount.pl is in the code directory`  
   
 ##### step10: transfer read counts to TPM
-`perl srnatoTPM.pl 03mergeuniq-6x-gap300.bed clusterinfo.txt >21+21srna.tpm  ##srnatoTPM.pl is in the code directory`
+`perl srnatoTPM.pl 03mergeuniq-6x-gap300.bed clusterinfo.txt >21+21srnacluster.tpm  ##srnatoTPM.pl is in the code directory`
