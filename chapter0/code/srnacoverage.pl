@@ -1,5 +1,4 @@
 ```perl
-#this is coverage.pl;
 use strict;
 use warnings;
 my %hb;
