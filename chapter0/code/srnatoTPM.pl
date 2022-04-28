@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 my %hb; my %node;
-open IN,"<03mergeuniq-54tissues-6x-gap300.bed";
+open IN,"<$ARGV[0]";
 while (my $str=<IN>){
 	chomp $str;
 	my @arr=split /\t/,$str;
@@ -10,7 +10,7 @@ while (my $str=<IN>){
 	$hb{$arr[3]}=$len;
 }
 close IN;
-open IN,"<$ARGV[0]";
+open IN,"<$ARGV[1]";
 my $str=<IN>;
 print "$str";
 chomp $str;
