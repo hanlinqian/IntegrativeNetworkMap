@@ -43,3 +43,53 @@ step5: merge all the bams
 step6: bamtobed  
 `module load BEDTools/2.27; bedtools bamtobed -cigar -i 03mergeuniq.bam > 03mergeuniq.bed`
 
+step7: Remove low coverage sites (<6x)  
+`perl coverage.pl 03mergeuniq.bed >03mergeuniq-6x.bed`  
+```perl
+#this is coverage.pl;
+use strict;
+use warnings;
+my %hb;
+open IN,"<$ARGV[0]";
+my $str=<IN>;
+my @arr=split /\t/,$str;
+my $prechr=$arr[0];
+my $pres=$arr[1];
+my $pree=$arr[2];
+my @arr1=split /-/,$arr[3];
+my $num=$arr1[2];
+while ($str=<IN>){
+	chomp $str;
+	@arr=split /\t/,$str;
+	@arr1=split /-/,$arr[3];
+	if ($arr[0] eq $prechr){
+		if ($arr[1] <= $pree){
+			$num=$num+$arr1[2];
+			if ($arr[2] > $pree){
+				$pree=$arr[2];
+			}
+		}else{
+			if ($num >= 6){
+				print "$prechr\t$pres\t$pree\t$num\n";
+			}
+			$pres=$arr[1];
+			$pree=$arr[2];
+			$num=$arr1[2];
+		}
+	}else{
+		$prechr=$arr[0];
+		$pres=$arr[1];
+		$pree=$arr[2];
+		$num=$arr1[2];
+	}
+}
+close IN;
+```
+
+step8: merge adjacent bed to cluster  
+`bedtools merge -d 300 -i 03mergeuniq-6x.bed > 03mergeuniq-6x-gap300.bed`  
+
+step9: calculate read counts in each cluster  
+`bedtools intersect -a 03mergeuniq.bed -b 03mergeuniq-6x-gap300.bed -wb >cluster-tissues-read.txt;`  
+`bedtools intersect -a 03mergeuniq.bed -b 03mergeuniq-6x.bed -wb >highcoverage.bed;`
+
