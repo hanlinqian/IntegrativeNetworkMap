@@ -28,7 +28,7 @@
 
 ##### step9: calculate read counts in each cluster  
 `bedtools intersect -a 03mergeuniq.bed -b 03mergeuniq-6x-gap300.bed -wb >cluster-tissues-read.txt;`  
-`bedtools intersect -a 03mergeuniq.bed -b 03mergeuniq-6x.bed -wb >highcoverage.bed;`
+`bedtools intersect -a 03mergeuniq.bed -b 03mergeuniq-6x.bed -wb >highcoverage.bed;`  
 `perl srnacount.pl >cluster-readcount.txt  ##srnacount.pl is in the code directory`  
   
 ##### step10: transfer read counts to TPM
