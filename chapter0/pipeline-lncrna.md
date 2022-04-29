@@ -1,4 +1,4 @@
-#### The bam file to be processed is from the output file in step 2 of pipeline-totalrna.md (under the same path). And then subsequent processing is as follows:
+#### The bam file to be processed is from the output file in step 2 of pipeline-totalrna.md (under the same path). Final average expression file 21tis-lnc.tpm and annotation file lncrna.gff3 were in the data directory. And subsequent processing is as follows:
 ##### step1: obtain new annotation sites  
 `module load StringTie/1.3.0-foss-2016b; stringtie hisat+rf/samtools_$i\_sort_uq.bam -o GTF/$i\.gtf -p 2 -G Zea_mays.AGPv4.40.gff3 -l $i`
 
