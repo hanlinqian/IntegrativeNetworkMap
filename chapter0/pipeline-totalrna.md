@@ -12,5 +12,5 @@
 `module load StringTie/1.3.0-foss-2016b;`
 `stringtie hisat+rf/samtools_out_sort_uq.bam -p 5 -G Zea_mays.AGPv4.40.gtf -e -A hisat+rf/out_gene_exp.tab; rm hisat+rf/samtools_out_sort.bam`  
 
-##### step4: merge all the tissues' expression  
+##### step4: merge all the tissues' expression to one file  
 `perl mergetpm.pl > 31+31totalrna.tpm  ##mergetpm.pl is in the code directory`
