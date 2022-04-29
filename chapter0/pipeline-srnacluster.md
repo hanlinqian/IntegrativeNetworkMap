@@ -1,4 +1,4 @@
-#### Raw data was submitted to GSA(https://ngdc.cncb.ac.cn/gsa/), the accession was CRA006221. Final average expression file 21tis-srna.tpm.gz and annotation file srna.gff3.gz were in the data directory. Processing pipeline is as follows:
+#### Raw data was submitted to GSA(https://ngdc.cncb.ac.cn/gsa/), and accession number was CRA006221. Final average expression file 21tis-srna.tpm.gz and annotation file srna.gff3.gz were in the data directory. Processing pipeline is as follows:
 ##### step1: quality control and remove adapter  
 `module load cutadapt/1.9.1;`  
 `cutadapt -q 20,20 -o out.fq.gz input.fq.gz;  cutadapt -a AGTCGGAGGCCAAGCGGTCTTAGGAA -o out-rmada.fq.gz --discard-untrimmed -e 0.05 -O 14 --no-indels out.fq.gz;`  
