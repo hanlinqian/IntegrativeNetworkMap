@@ -13,7 +13,8 @@
 `CIRCexplorer2 annotate -r b734.40/4.40.gpd -g Zea_mays.AGPv4.dna.toplevel.fa -b back_spliced_junction.bed -o circularRNA_known-$i.txt; ##starting position of bed file is 0, while gff3 file is 1`
 
 ##### step4: merge all the tissues' read count to one file  
+`perl mergetpm.pl > 21+21circrna.tpm`
 The code refers to mergepm.pl in the code folder, and slightly modified according to the array location.
 
-##### step5: transfer read count to TPM  
-The code refers to srnatoTPM.pl in the code folder, and slightly modified according to the array location.
+##### step5: transfer read count to TPM(CPM)  
+According to the formula of CPM.
