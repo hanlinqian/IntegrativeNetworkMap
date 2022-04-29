@@ -14,7 +14,7 @@
 
 ##### step4: merge all the tissues' read count to one file  
 `perl mergetpm.pl > 21+21circrna.tpm`  
-The code refers to mergepm.pl in the code folder, and slightly modified according to the array location.
+The code refers to mergetpm.pl in the code folder, and slightly modified according to the array location.
 
 ##### step5: transfer read count to TPM(CPM)  
 According to the formula of CPM.
