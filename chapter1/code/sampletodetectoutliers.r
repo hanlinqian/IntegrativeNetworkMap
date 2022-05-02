@@ -1,0 +1,10 @@
+library(WGCNA)
+args<-commandArgs(T)
+powers1=c(seq(1,10,by=1),seq(12,30,by=2))
+datExpr=read.table(args[1],sep="\t",row.names=1,header=T,check.names=F)
+datExpr = t(datExpr)
+gsg = goodSamplesGenes(datExpr, verbose = 3);
+sampleTree = hclust(dist(datExpr), method = "average")
+pdf(file="Sampleclusteringtodetectoutliers.pdf")
+plot(sampleTree, main = "Sample clustering to detect outliers", sub="", xlab="")
+dev.off()
