@@ -2,7 +2,7 @@ Slim co-expression network only containing annotated genes was constrcuted, name
 Co-translation network, **edge-cotranslation.txt.gz** from gene expression matrix quantified by Ribo-Seq was also constructed.  
 Input log-transformed expression matrixs were in the data folder. Some network properties were also calculated, such as node information(in data folder), module(in data folder), shortest distance (in XXX).  
 The processing pipeline is:  
-#### part1: Slim co-expression network  
+### Part1: Slim co-expression network  
 ##### step1: calculate soft thresholding  
 `module load R/3.6.0; Rscript softThresholding.r totalrna-log-rep1.txt totalrna-softThresholding-rep1.pdf; Rscript softThresholding.r totalrna-log-rep2.txt totalrna-softThresholding-rep2.pdf`  
 ##softThresholding.r in the code folder, and totalrna-log-rep1.txt, totalrna-softThresholding-rep1.pdf, totalrna-log-rep2.txt, totalrna-softThresholding-rep2.pdf in the data folder.  
@@ -18,7 +18,7 @@ The processing pipeline is:
 ##### step6: divide modules
 `module load MCL/14-137; mcl edge-slimcoexpression-abc.txt --abc -o module-slimcoexpression.txt`
 
-#### part2: Co-translation network  
+### Part2: Co-translation network  
 ##### step1: calculate soft thresholding  
 `module load R/3.6.0; Rscript softThresholding.r ribo-log-rep1.txt ribo-softThresholding-rep1.pdf; Rscript softThresholding.r ribo-log-rep2.txt ribo-softThresholding-rep2.pdf`  
 ##softThresholding.r in the code folder, and ribo-log-rep1.txt, ribo-softThresholding-rep1.pdf, ribo-log-rep2.txt, ribo-softThresholding-rep2.pdf in the data folder.  
@@ -34,7 +34,7 @@ The processing pipeline is:
 ##### step6: divide modules
 `module load MCL/14-137; mcl edge-cotranslation-abc.txt --abc -o module-cotranslation.txt`
 
-#### part3: Co-expression network with ncRNAs  
+### Part3: Co-expression network with ncRNA  
 ##### step1: construct network by one step and using average expression(recommend)  
 `module load R/3.6.0; Rscript wgcna-edge.r rnawithnc-exp.txt edge-coexpressionwithncrna.txt; ##rnawithnc-exp.txt in the data folder`  
 ##### step2: statistics node information
@@ -42,7 +42,7 @@ The processing pipeline is:
 ##### step3: divide modules
 `module load MCL/14-137; mcl edge-coexpressionwithncrna-abc.txt --abc -o module-coexpressionwithncrna.txt`
 
-#### part4: Interactome(high confidence and low confidence)  
+### Part4: Interactome(high confidence and low confidence)  
 ##### step1: statistics node information
 `module load R/3.6.0; Rscript NetInfo.r edge-proteome-highconf.txt nodeinfo-proteome-highconf.txt sd-PPIs-highconf.txt transitivity-PPIs-highconf.txt`  
 `module load R/3.6.0; Rscript NetInfo.r edge-proteome-lowconf.txt nodeinfo-proteome-lowconf.txt sd-PPIs-lowconf.txt transitivity-PPIs-lowconf.txt`  
@@ -50,7 +50,23 @@ The processing pipeline is:
 `module load MCL/14-137; mcl edge-proteome-highconf-abc.txt --abc -o module-proteome-highconf.txt`  
 `module load MCL/14-137; mcl edge-proteome-lowconf-abc.txt --abc -o module-proteome-lowconf.txt`  
 
-#### part5: Slim-IntegrativeOmics(high confidence and low confidence)  
-aaa  
+### Part5: Slim-IntegrativeOmics(high confidence and low confidence)  
+##### step1: statistics node information  
+Integrates all gene-gene pairs of each omics(ChIA-PET network, slim co-expression network, co-translation network and interactome). The final weight is the sum of the weights of each omics.
+##### step2: statistics node information
+`module load R/3.6.0; Rscript NetInfo.r edge-slimio-highconf.txt nodeinfo-slimio-highconf.txt sd-slimio-highconf.txt transitivity-slimio-highconf.txt`  
+`module load R/3.6.0; Rscript NetInfo.r edge-slimio-lowconf.txt nodeinfo-slimio-lowconf.txt sd-slimio-lowconf.txt transitivity-slimio-lowconf.txt`  
+##### step3: divide modules
+`module load MCL/14-137; mcl edge-slimio-highconf-abc.txt --abc -o module-slimio-highconf.txt`  
+`module load MCL/14-137; mcl edge-slimio-lowconf-abc.txt --abc -o module-slimio-lowconf.txt`  
 
-#### part6: IntegrativeOmics with ncRNAs(high confidence and low confidence)  
+### Part6: IntegrativeOmics with ncRNAs(high confidence and low confidence)  
+##### step1: statistics node information  
+Integrates all gene-gene pairs of each omics(ChIA-PET network, co-expression network with ncRNA, co-translation network and interactome). The final weight is the sum of the weights of each omics.
+##### step2: statistics node information
+`module load R/3.6.0; Rscript NetInfo.r edge-iowithncrna-highconf.txt nodeinfo-iowithncrna-highconf.txt sd-iowithncrna-highconf.txt transitivity-iowithncrna-highconf.txt`  
+`module load R/3.6.0; Rscript NetInfo.r edge-iowithncrna-lowconf.txt nodeinfo-iowithncrna-lowconf.txt sd-iowithncrna-lowconf.txt transitivity-iowithncrna-lowconf.txt`  
+##### step3: divide modules
+`module load MCL/14-137; mcl edge-iowithncrna-highconf-abc.txt --abc -o module-iowithncrna-highconf.txt`  
+`module load MCL/14-137; mcl edge-iowithncrna-lowconf-abc.txt --abc -o module-iowithncrna-lowconf.txt`  
+
