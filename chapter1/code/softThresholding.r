@@ -5,7 +5,7 @@ datExpr=read.table(args[1],sep="\t",row.names=1,header=T,check.names=F)
 datExpr = t(datExpr)
 RpowerTable=pickSoftThreshold(datExpr, powerVector=powers1)[[2]]
 cex1=0.9
-pdf(file="softThresholding.pdf")
+pdf(file=args[2])
 par(mfrow=c(1,2))
 plot(RpowerTable[,1], -sign(RpowerTable[,3])*RpowerTable[,2],xlab="Soft Threshold (power)",ylab="Scale Free Topology Model Fit,signed R^2",type="n")
 text(RpowerTable[,1], -sign(RpowerTable[,3])*RpowerTable[,2], labels=powers1,cex=cex1,col="red")
