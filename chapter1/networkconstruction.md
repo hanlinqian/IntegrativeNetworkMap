@@ -1,8 +1,6 @@
-Slim co-expression network only containing annotated genes was constrcuted, named **edge-slimcoexpression.txt.gz** (in XXX), and another co-expression network not only including mRNA, but also non-coding RNA(lncRNA, small RNA cluster, circRNA, fusionRNA) was constrcuted, named **edge-coexpressionwithncrna.txt.gz** (in XXX).  
-Co-translation network, **edge-cotranslation.txt.gz** from gene expression matrix quantified by Ribo-Seq was also constructed.  
-Input log-transformed expression matrixs were in the data folder. Some network properties were also calculated, such as node information(in data folder), module(in data folder), shortest distance (in XXX).  
+Six different omics networks were constructed. All edge files containing gene-gene pairs were stored in XXX. The input data was log-transformed expression matrixs, in data folder. Others, Some network properties were calculated, such as node information(in data folder), module(in data folder), shortest distance (in XXX).  
 The processing pipeline is:  
-### Part1: Slim co-expression network  
+### Part1: Slim co-expression network(only containing annotated genes)  
 ##### step1: calculate soft thresholding  
 `module load R/3.6.0; Rscript softThresholding.r totalrna-log-rep1.txt totalrna-softThresholding-rep1.pdf; Rscript softThresholding.r totalrna-log-rep2.txt totalrna-softThresholding-rep2.pdf`  
 ##softThresholding.r in the code folder, and totalrna-log-rep1.txt, totalrna-softThresholding-rep1.pdf, totalrna-log-rep2.txt, totalrna-softThresholding-rep2.pdf in the data folder.  
@@ -34,7 +32,7 @@ The processing pipeline is:
 ##### step6: divide modules
 `module load MCL/14-137; mcl edge-cotranslation-abc.txt --abc -o module-cotranslation.txt`
 
-### Part3: Co-expression network with ncRNA  
+### Part3: Co-expression network with ncRNA(ot only including mRNA, but also non-coding RNA, lncRNA, small RNA cluster, circRNA, fusionRNA)  
 ##### step1: construct network by one step and using average expression(recommend)  
 `module load R/3.6.0; Rscript wgcna-edge.r rnawithnc-exp.txt edge-coexpressionwithncrna.txt; ##rnawithnc-exp.txt in the data folder`  
 ##### step2: statistics node information
