@@ -1,0 +1,3 @@
+
+Two total RNA co-expression network were constructed for the two repetitions respectively, and the shared edges were selected as the final network interaction, named **edge-slimcoexpression.txt.gz** in XXX. The input log-transformed expression matrix to be processed were in data folder, named totalrna-log-rep1.txt and totalrna-log-rep2.txt. Some network properties were also calculated, such as node information(in data folder), module(in data folder), shortest distance (in XXX). The processing pipeline is:  
+##### step1: calculate soft thresholding before constructing co-expression network by WGCNA  
