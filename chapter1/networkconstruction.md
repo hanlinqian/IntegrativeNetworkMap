@@ -1,5 +1,4 @@
-Six different omics networks were constructed. All edge files containing gene-gene pairs were stored in XXX. The input data was log-transformed expression matrixs, in data folder. Others, Some network properties were calculated, such as node information(in data folder), module(in data folder), shortest distance (in XXX).  
-The processing pipeline is:  
+Six different omics networks were constructed. All edge files containing gene-gene pairs were stored in XXX. The input data was log-transformed expression matrixs, in data folder. Others, Some network properties were calculated, such as node information(in data folder), module(in data folder), shortest distance (in XXX). The processing pipeline is:  
 ### Part1: Slim co-expression network(only containing annotated genes)  
 ##### step1: calculate soft thresholding  
 `module load R/3.6.0; Rscript softThresholding.r totalrna-log-rep1.txt totalrna-softThresholding-rep1.pdf; Rscript softThresholding.r totalrna-log-rep2.txt totalrna-softThresholding-rep2.pdf`  
@@ -32,7 +31,7 @@ The processing pipeline is:
 ##### step6: divide modules
 `module load MCL/14-137; mcl edge-cotranslation-abc.txt --abc -o module-cotranslation.txt`
 
-### Part3: Co-expression network with ncRNA(ot only including mRNA, but also non-coding RNA, lncRNA, small RNA cluster, circRNA, fusionRNA)  
+### Part3: Co-expression network with ncRNA(not only including mRNA, but also lncRNA, small RNA cluster, circRNA, fusionRNA) 
 ##### step1: construct network by one step and using average expression(recommend)  
 `module load R/3.6.0; Rscript wgcna-edge.r rnawithnc-exp.txt edge-coexpressionwithncrna.txt; ##rnawithnc-exp.txt in the data folder`  
 ##### step2: statistics node information
