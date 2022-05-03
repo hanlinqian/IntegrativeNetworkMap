@@ -5,6 +5,6 @@ datExpr=read.table(args[1],sep="\t",row.names=1,header=T,check.names=F)
 datExpr = t(datExpr)
 gsg = goodSamplesGenes(datExpr, verbose = 3);
 sampleTree = hclust(dist(datExpr), method = "average")
-pdf(file="Sampleclusteringtodetectoutliers.pdf")
+pdf(file=args[2])
 plot(sampleTree, main = "Sample clustering to detect outliers", sub="", xlab="")
 dev.off()
