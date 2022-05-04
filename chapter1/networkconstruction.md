@@ -1,5 +1,5 @@
 Six different omics networks were constructed. All edge files containing gene-gene pairs were stored in XXX. The input data was log-transformed expression matrixs, in data folder. Others, Some network properties were calculated, such as node information(in data folder), module(in data folder), shortest distance (in XXX). The processing pipeline is:  
-### Part1: Slim co-expression network(only containing annotated genes)  
+### Net1: Slim co-expression network(only containing annotated genes)  
 ##### step1: calculate soft thresholding  
 `module load R/3.6.0; Rscript softThresholding.r totalrna-log-rep1.txt totalrna-softThresholding-rep1.pdf; Rscript softThresholding.r totalrna-log-rep2.txt totalrna-softThresholding-rep2.pdf`  
 ##softThresholding.r in the code folder, and totalrna-log-rep1.txt, totalrna-softThresholding-rep1.pdf, totalrna-log-rep2.txt, totalrna-softThresholding-rep2.pdf in the data folder.  
@@ -15,7 +15,7 @@ Six different omics networks were constructed. All edge files containing gene-ge
 ##### step6: divide modules
 `module load MCL/14-137; mcl edge-slimcoexpression-abc.txt --abc -o module-slimcoexpression.txt`
 
-### Part2: Co-translation network  
+### Net2: Co-translation network  
 ##### step1: calculate soft thresholding  
 `module load R/3.6.0; Rscript softThresholding.r ribo-log-rep1.txt ribo-softThresholding-rep1.pdf; Rscript softThresholding.r ribo-log-rep2.txt ribo-softThresholding-rep2.pdf`  
 ##softThresholding.r in the code folder, and ribo-log-rep1.txt, ribo-softThresholding-rep1.pdf, ribo-log-rep2.txt, ribo-softThresholding-rep2.pdf in the data folder.  
@@ -31,7 +31,7 @@ Six different omics networks were constructed. All edge files containing gene-ge
 ##### step6: divide modules
 `module load MCL/14-137; mcl edge-cotranslation-abc.txt --abc -o module-cotranslation.txt`
 
-### Part3: Co-expression network with ncRNA(not only including mRNA, but also lncRNA, small RNA cluster, circRNA, fusionRNA) 
+### Net3: Co-expression network with ncRNA(not only including mRNA, but also lncRNA, small RNA cluster, circRNA, fusionRNA) 
 ##### step1: construct network by one step and using average expression(recommend)  
 `module load R/3.6.0; Rscript wgcna-edge.r rnawithnc-exp.txt edge-coexpressionwithncrna.txt; ##rnawithnc-exp.txt in the data folder`  
 ##### step2: statistics node information
@@ -39,7 +39,7 @@ Six different omics networks were constructed. All edge files containing gene-ge
 ##### step3: divide modules
 `module load MCL/14-137; mcl edge-coexpressionwithncrna-abc.txt --abc -o module-coexpressionwithncrna.txt`
 
-### Part4: Interactome(high confidence and low confidence)  
+### Net4: Interactome(high confidence and low confidence)  
 ##### step1: statistics node information
 `module load R/3.6.0; Rscript NetInfo.r edge-proteome-highconf.txt nodeinfo-proteome-highconf.txt sd-PPIs-highconf.txt transitivity-PPIs-highconf.txt`  
 `module load R/3.6.0; Rscript NetInfo.r edge-proteome-lowconf.txt nodeinfo-proteome-lowconf.txt sd-PPIs-lowconf.txt transitivity-PPIs-lowconf.txt`  
@@ -47,7 +47,7 @@ Six different omics networks were constructed. All edge files containing gene-ge
 `module load MCL/14-137; mcl edge-proteome-highconf-abc.txt --abc -o module-proteome-highconf.txt`  
 `module load MCL/14-137; mcl edge-proteome-lowconf-abc.txt --abc -o module-proteome-lowconf.txt`  
 
-### Part5: Slim-IntegrativeOmics(high confidence and low confidence)  
+### Net5: Slim-IntegrativeOmics(high confidence and low confidence)  
 ##### step1: statistics node information  
 Integrates all gene-gene pairs of each omics(ChIA-PET network, slim co-expression network, co-translation network and interactome). The final weight is the sum of the weights of each omics.
 ##### step2: statistics node information
@@ -57,7 +57,7 @@ Integrates all gene-gene pairs of each omics(ChIA-PET network, slim co-expressio
 `module load MCL/14-137; mcl edge-slimio-highconf-abc.txt --abc -o module-slimio-highconf.txt`  
 `module load MCL/14-137; mcl edge-slimio-lowconf-abc.txt --abc -o module-slimio-lowconf.txt`  
 
-### Part6: IntegrativeOmics with ncRNAs(high confidence and low confidence)  
+### Net6: IntegrativeOmics with ncRNAs(high confidence and low confidence)  
 ##### step1: statistics node information  
 Integrates all gene-gene pairs of each omics(ChIA-PET network, co-expression network with ncRNA, co-translation network and interactome). The final weight is the sum of the weights of each omics.
 ##### step2: statistics node information
