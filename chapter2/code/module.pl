@@ -1,4 +1,4 @@
-##usage: perl sp.pl module-slimcoexpression.txt module-cotranslation.txt module-proteome-highconf.txt
+##usage: perl module.pl module-slimcoexpression.txt module-cotranslation.txt module-proteome-highconf.txt
 use strict;
 use warnings;
 print "Type\tOmics\tper\n";
