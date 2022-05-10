@@ -1,5 +1,5 @@
 ##usage: perl net-pavlue.pl genenumber iterationnumber geneid.txt
-##usage: perl net-pavlue.pl 62 100 62kernel.txt
+##usage: perl net-pavlue.pl 62 1000 62kernel.txt
 use strict;
 use warnings;
 my $knwongenenum=$ARGV[0];
