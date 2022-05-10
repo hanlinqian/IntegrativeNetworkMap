@@ -1,3 +1,4 @@
+##usage: perl net-direct.pl 62kernel.txt out.csv
 use strict;
 use warnings;
 my $in=$ARGV[0];
