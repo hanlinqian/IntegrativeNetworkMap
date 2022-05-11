@@ -36,8 +36,8 @@ data <- read.table("test-corexp.txt",header = T,sep = "\t") ##test-corexp.txt wa
 ggplot(data, aes(x=rep1, y=rep2))+
 	stat_density_2d(aes(fill = ..density..), geom = "raster", contour = FALSE)+
 	scale_fill_gradient2(low = 'gray', high = 'red', midpoint = 0.08,limits=c(0,0.2))+
-  scale_x_continuous(limits = c(0, 9), expand = c(0, 0))+
+	scale_x_continuous(limits = c(0, 9), expand = c(0, 0))+
 	scale_y_continuous(limits = c(0, 9), expand = c(0, 0))+
 	theme(legend.position='none')
-  cor(data$rep1,data$rep2) ##calculate correlation
+cor(data$rep1,data$rep2) ##calculate correlation
 ```
