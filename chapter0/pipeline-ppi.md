@@ -18,7 +18,7 @@
 `perl ccs-bd-ad.pl BD‐test2cds‐blast.txt AD‐test2cds‐blast.txt >ccs‐genepairtest.txt  ##ccs-bd-ad.pl is in the code directory`
 
 ##### step6: Obtain unique undirected gene pairs  
-`perl genepair-uniq.pl ccs‐genepair‐test.txt > edge-proteome-lowconf.txt  ##genepair-uniq.pl is in the code directory`  
+`perl genepair-uniq.pl ccs‐genepairtest.txt > edge-proteome-lowconf.txt  ##genepair-uniq.pl is in the code directory`  
 
 ##### step7: Obtain high confidence gene pairs 
 Empty vector assay was used to remove possible self-activating genes only existing in BD library, and final file was edge-proteome-highconf.txt in the data folder.
