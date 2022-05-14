@@ -11,7 +11,7 @@
 `perl dabsab.pl trans >trans-type.txt`  
 `perl dabsab.pl ribo >ribo-type.txt`  
 `perl dabsab.pl ppi >ppi-type.txt`   
-##edge files were in XXX, node information was in chapter1/data folder, genecommon.pl code and dabsab.pl were in code folder and id.txt were in data folder.  
+##edge files were in XXX, node information was in chapter1/data folder, genecommon.pl and dabsab.pl were in code folder and id.txt were in data folder.  
 ##### 4. Visual code for Fig. 2g and Extended Data Fig. 13
 ```R
 library(ggalluvial)
