@@ -5,10 +5,12 @@
 `perl duplicate-SD.pl sd-slimcoexpression.txt sd-cotranslation.txt sd-PPIs-highconf.txt`  
 ##Three shortest distance files from three omics were in XXX.
 ##### 3. Statistics for Fig. 2d-2g
-`for i in $(cat id.txt);do perl genecommon.pl edge-slimcoexpression.txt nodeinfo-slimcoexpression.txt Zma.$i.txt >trans-$i.txt; perl genecommon.pl edge-cotranslation.txt nodeinfo-cotranslation.txt Zma.$i.txt >ribo-$i.txt; perl genecommon.pl edge-proteome-highconf.txt nodeinfo-proteome-highconf.txt Zma.$i.txt >ppi-$i.txt; done`  
-`perl dabsab.pl trans >trans-type.txt;`  
-`perl dabsab.pl ribo >ribo-type.txt;`  
-`perl dabsab.pl ppi >ppi-type.txt;`   
+`for i in $(cat id.txt);do perl genecommon.pl edge-slimcoexpression.txt nodeinfo-slimcoexpression.txt Zma.$i.txt >trans-$i.txt;  done`  
+`for i in $(cat id.txt);do perl genecommon.pl edge-cotranslation.txt nodeinfo-cotranslation.txt Zma.$i.txt >ribo-$i.txt; done`   
+`for i in $(cat id.txt);do perl genecommon.pl edge-proteome-highconf.txt nodeinfo-proteome-highconf.txt Zma.$i.txt >ppi-$i.txt; done`  
+`perl dabsab.pl trans >trans-type.txt`  
+`perl dabsab.pl ribo >ribo-type.txt`  
+`perl dabsab.pl ppi >ppi-type.txt`   
 ##edge files were in XXX, node information was in chapter1/data folder, genecommon.pl code was in data folder and and id.txt were in data folder.  
 ##### 4. Visual code for Fig. 2g and Extended Data Fig. 13
 ```R
