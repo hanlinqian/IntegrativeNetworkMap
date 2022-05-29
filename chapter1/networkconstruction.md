@@ -1,4 +1,4 @@
-Six different omics networks were constructed. All edge files containing gene-gene pairs were stored in XXX. The input data was log-transformed expression matrixs, in data folder. Others, Some network properties were calculated, such as node information(in data folder), module(in data folder), shortest distance (in XXX). The processing pipeline is:  
+Six different omics networks were constructed. All edge files containing gene-gene pairs were stored in OMIX(https://ngdc.cncb.ac.cn/omix/) which accession number was OMIX001131. The input data was log-transformed expression matrixs, in data folder. Others, Some network properties were calculated, such as node information(in data folder), module(in data folder), shortest distance (in OMIX(https://ngdc.cncb.ac.cn/omix/) which accession number was OMIX001131). The processing pipeline is:  
 ### Net1: Slim co-expression network(only containing annotated genes)  
 ##### step1: calculate soft thresholding  
 `module load R/3.6.0; Rscript softThresholding.r totalrna-log-rep1.txt totalrna-softThresholding-rep1.pdf; Rscript softThresholding.r totalrna-log-rep2.txt totalrna-softThresholding-rep2.pdf`  
