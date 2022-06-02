@@ -9,3 +9,5 @@ This code was used to calculate similarity with 68 train genes in the network, i
 5) Hub Promoted Similarity (HP);  
 6) Hub Depressed Similarity (HD);  
 7) Sorensen-Dice Similarity (sorensen).
+
+##### 2. xx
