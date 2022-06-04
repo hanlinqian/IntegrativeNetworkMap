@@ -10,4 +10,11 @@ This code was used to calculate similarity with 68 train genes in the network, i
 6) Hub Depressed Similarity (HD);  
 7) Sorensen-Dice Similarity (sorensen).
 
-##### 2. xx
+##### 2. Five classical Machine Learning Model Evaluation of Interactome  
+Refer to code Trainning_results_for_sd_feature.py in code folder.
+
+##### 3. Five classical Machine Learning Model Evaluation of Intergrative omics which containg expression, nodeinformation and shortest distance attributes
+Refer to code Training_results_for_different_features.py in code folder.
+
+##### 4. Prediction by Machine Learning and feature evaluation
+Refer to code predresult.py in code folder.
