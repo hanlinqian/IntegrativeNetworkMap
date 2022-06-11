@@ -1,1 +1,1 @@
-This chapter is about duplicate genes
+This section is about duplicate genes.
