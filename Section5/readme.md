@@ -1,1 +1,1 @@
-This chapter is about predicting flowering time genes using machine learning.
+This section is about predicting genes of flowering time by machine learning.
