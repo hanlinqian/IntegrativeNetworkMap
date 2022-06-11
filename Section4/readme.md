@@ -1,1 +1,1 @@
-This chapter is about network reconstruction and calculate p value.
+This section is about network reconstruction and p value calculation.
