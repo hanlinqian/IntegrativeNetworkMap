@@ -1,4 +1,4 @@
-#### The input bam files in step1 of this pipeline are from step2 of pipeline-totalrna.md in section0. Final expression file (21tis-lnc.tpm) and annotation file (lncrna.gff3) were uploaded into section0/data. This pipeline is as follows:
+#### The input bam files in step1 of this pipeline are from step2 of pipeline-totalrna.md in section0. Final expression file (21tis-lnc.tpm) and annotation file (lncrna.gff3) were uploaded into section0/data.
 ##### step1: obtain new annotation sites  
 `module load StringTie/1.3.0-foss-2016b; stringtie hisat+rf/samtools_$i\_sort_uq.bam -o GTF/$i\.gtf -p 2 -G Zea_mays.AGPv4.40.gff3 -l $i`
 
