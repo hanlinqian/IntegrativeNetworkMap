@@ -1,1 +1,1 @@
-This section is about identifying and calculating expression of RNAs (mRNA, lncRNA, sRNA, circRNA), and obtaining protein-protein interactions.
+This section is about identifying different types of RNA (mRNA, lncRNA, sRNA, circRNA) and calculating their expression, and obtaining protein-protein interactions.
