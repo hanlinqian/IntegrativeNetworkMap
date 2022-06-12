@@ -1,4 +1,4 @@
-#### Raw data was submitted to GSA(https://ngdc.cncb.ac.cn/gsa/), and accession number was CRA006221. Final file was named edge-proteome-lowconf.txt in the data directory. The processing pipeline is as follows:
+#### Raw data was submitted to GSA database (https://ngdc.cncb.ac.cn/gsa/) with accession number CRA006221. Final output interaction file (edge-proteome-lowconf.txt) were uploaded into section0/data. 
 ##### step1: bamtofq  
 `module load SMRTLink/9.0.0.92188; ccs test.subreads.bam test.fastq.gz ‐‐report‐file test_report.txt ‐‐min‐length 50 ‐‐max‐length 100000 ‐j 20`
 
