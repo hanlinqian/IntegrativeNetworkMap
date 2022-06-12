@@ -1,4 +1,4 @@
-#### Clean data after preliminary processing by SOAPnuke and FastUniq software was submitted to GSA(https://ngdc.cncb.ac.cn/gsa/), and accession number was CRA006221. Final average expression file 21tis-circ.tpm and annotation file circ.gff3 were in the data directory. The processing pipeline is as follows:
+#### The clean data obtained after preliminary processing of the original data by SOAPnuke and FastUniq software was submitted to GSA(https://ngdc.cncb.ac.cn/gsa/, accession number: CRA006221). Final expression file (21tis-circ.tpm) and annotation file (circ.gff3) were uploaded into the data folder of section0. The processing pipeline is as follows:
 ##### step1: build genome index  
 `module load Bowtie/1.2.2; bowtie-build Zea_mays.AGPv4.dna.toplevel.fa bowtie-1.2.2-index/Zea_mays.AGPv4.dna.toplevel`
 
