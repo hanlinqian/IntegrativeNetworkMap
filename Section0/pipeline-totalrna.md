@@ -1,4 +1,4 @@
-#### Raw data was submitted to GSA(https://ngdc.cncb.ac.cn/gsa/), and accession number was CRA006221. Final average expression file slim-transcriptome.tpm was in the data directory. The processing pipeline is as follows:
+#### Raw data was submitted to GSA database (https://ngdc.cncb.ac.cn/gsa/) with accession number CRA006221. Final output expression file (slim-transcriptome.tpm) was uploaded into section0/data.
 ##### step1: quality control and remove adapter  
 `module load SOAPnuke/2.1.6;`  
 `SOAPnuke filter -J -T 3 -n 0.1 -q 0.5 -l 12 -1 totalrna/raw-1.fq.gz -2 totalrna/raw-2.fq.gz  -f AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAA  -r AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG  -o 01SOAPnuke/out -C clean-out_1.fq.gz -D clean-out_2.fq.gz;`    
