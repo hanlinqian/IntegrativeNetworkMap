@@ -1,39 +1,56 @@
-Six different omics networks were constructed. All edge files containing gene-gene pairs were stored in OMIX(https://ngdc.cncb.ac.cn/omix/) which accession number was OMIX001131. The input data was log-transformed expression matrixs, in data folder. Others, Some network properties were calculated, such as node information(in data folder), module(in data folder), shortest distance (in OMIX(https://ngdc.cncb.ac.cn/omix/) which accession number was OMIX001131). The processing pipeline is:  
+#### Six different type networks (Slim co-expression network, Co-translation network, Co-expression network with ncRNA, Interactome, Slim-IntegrativeOmics, IntegrativeOmics with ncRNAs) were constructed.  
+#### Input files (log-transformed expression matrixs: totalrna-log-rep1.txt, totalrna-log-rep2.txt, ribo-log-rep1.txt, ribo-log-rep2.txt, rnawithnc-exp.txt) for co-expression and co-translation network were uploaded into Section1/data. Input files (edge-proteome-highconf.txt, edge-proteome-lowconf.txt) for Interactome were uploaded into Section0/data. 
+#### Final output edge files were stored into OMIX(https://ngdc.cncb.ac.cn/omix/) with accession number OMIX001131.  
+#### Some network properties were calculated: node information file (uploaded into Section1/data), module file (uploaded into Section1/data), shortest distance file (in OMIX with accession number OMIX001131).  
+#### Code in this pipeline were uploaded into Section1/code.
 ### Net1: Slim co-expression network(only containing annotated genes)  
 ##### step1: calculate soft thresholding  
-`module load R/3.6.0; Rscript softThresholding.r totalrna-log-rep1.txt totalrna-softThresholding-rep1.pdf; Rscript softThresholding.r totalrna-log-rep2.txt totalrna-softThresholding-rep2.pdf`  
-##softThresholding.r in the code folder, and totalrna-log-rep1.txt, totalrna-softThresholding-rep1.pdf, totalrna-log-rep2.txt, totalrna-softThresholding-rep2.pdf in the data folder.  
+`module load R/3.6.0;`  
+`Rscript softThresholding.r totalrna-log-rep1.txt totalrna-softThresholding-rep1.pdf;`  
+`Rscript softThresholding.r totalrna-log-rep2.txt totalrna-softThresholding-rep2.pdf`    
 ##### step2: sample clustering to detect outliers
-`module load R/3.6.0; Rscript sampletodetectoutliers.r totalrna-log-rep1.txt totalrna-Sampletodetectoutliers-rep1.pdf; Rscript sampletodetectoutliers.r totalrna-log-rep2.txt totalrna-Sampletodetectoutliers-rep2.pdf`  
-##sampletodetectoutliers.r in the code folder, and totalrna-Sampletodetectoutliers-rep1.pdf and totalrna-Sampletodetectoutliers-rep2.pdf in the data folder. No abnormal sample.
-##### step3: constrcut gene-gene interactions by WGCNA
-`module load R/3.6.0; Rscript totalrna-edge.r totalrna-log-rep1.txt 18 totalrna-edge-rep1.txt; Rscript totalrna-edge.r totalrna-log-rep2.txt 12 totalrna-edge-rep2.txt`  
-##### step4: select overlapped gene pairs as final co-expression network's edges  
-`perl network-overlap.pl totalrna-edge-rep1.txt totalrna-edge-rep2.txt >edge-slimcoexpression.txt ##network-overlap.pl in the code folder`   
+`module load R/3.6.0;`  
+`Rscript sampletodetectoutliers.r totalrna-log-rep1.txt totalrna-Sampletodetectoutliers-rep1.pdf;`  
+`Rscript sampletodetectoutliers.r totalrna-log-rep2.txt totalrna-Sampletodetectoutliers-rep2.pdf`  
+##### step3: constrcut co-expression network by WGCNA
+`module load R/3.6.0;`  
+`Rscript totalrna-edge.r totalrna-log-rep1.txt 18 totalrna-edge-rep1.txt;`  
+`Rscript totalrna-edge.r totalrna-log-rep2.txt 12 totalrna-edge-rep2.txt`  
+##### step4: obtain overlapped gene pairs as final co-expression network's edges  
+`perl network-overlap.pl totalrna-edge-rep1.txt totalrna-edge-rep2.txt >edge-slimcoexpression.txt`   
 ##### step5: statistics node information
-`module load R/3.6.0; Rscript NetInfo.r edge-slimcoexpression.txt nodeinfo-slimcoexpression.txt sd-slimcoexpression.txt transitivity-slimcoexpression.txt; ##NetInfo.r in code folder`
+`module load R/3.6.0;`  
+`Rscript NetInfo.r edge-slimcoexpression.txt nodeinfo-slimcoexpression.txt sd-slimcoexpression.txt transitivity-slimcoexpression.txt`
 ##### step6: divide modules
 `module load MCL/14-137; mcl edge-slimcoexpression-abc.txt --abc -o module-slimcoexpression.txt`
 
 ### Net2: Co-translation network  
 ##### step1: calculate soft thresholding  
-`module load R/3.6.0; Rscript softThresholding.r ribo-log-rep1.txt ribo-softThresholding-rep1.pdf; Rscript softThresholding.r ribo-log-rep2.txt ribo-softThresholding-rep2.pdf`  
-##softThresholding.r in the code folder, and ribo-log-rep1.txt, ribo-softThresholding-rep1.pdf, ribo-log-rep2.txt, ribo-softThresholding-rep2.pdf in the data folder.  
+`module load R/3.6.0;`  
+`Rscript softThresholding.r ribo-log-rep1.txt ribo-softThresholding-rep1.pdf;` 
+`Rscript softThresholding.r ribo-log-rep2.txt ribo-softThresholding-rep2.pdf`  
+
 ##### step2: sample clustering to detect outliers
-`module load R/3.6.0; Rscript sampletodetectoutliers.r ribo-log-rep1.txt ribo-Sampletodetectoutliers-rep1.pdf; Rscript sampletodetectoutliers.r ribo-log-rep2.txt ribo-Sampletodetectoutliers-rep2.pdf`  
-##sampletodetectoutliers.r in the code folder, and ribo-Sampletodetectoutliers-rep1.pdf and ribo-Sampletodetectoutliers-rep2.pdf in the data folder. No abnormal sample.
-##### step3: constrcut gene-gene interactions by WGCNA
-`module load R/3.6.0; Rscript totalrna-edge.r ribo-log-rep1.txt 9 ribo-edge-rep1.txt; Rscript totalrna-edge.r ribo-log-rep2.txt 21 ribo-edge-rep2.txt ##in order to obtain more gene interactions, adjust threshold to 0.01`  
+`module load R/3.6.0;`  
+`Rscript sampletodetectoutliers.r ribo-log-rep1.txt ribo-Sampletodetectoutliers-rep1.pdf;`  
+`Rscript sampletodetectoutliers.r ribo-log-rep2.txt ribo-Sampletodetectoutliers-rep2.pdf`  
+
+##### step3: constrcut co-translation network by WGCNA
+`module load R/3.6.0;`  
+`Rscript totalrna-edge.r ribo-log-rep1.txt 9 ribo-edge-rep1.txt;`  
+`Rscript totalrna-edge.r ribo-log-rep2.txt 21 ribo-edge-rep2.txt` 
+
 ##### step4: select overlapped gene pairs as final co-expression network's edges  
-`perl network-overlap.pl ribo-edge-rep1.txt ribo-edge-rep2.txt >edge-cotranslation.txt; ##network-overlap.pl in the code folder`   
+`perl network-overlap.pl ribo-edge-rep1.txt ribo-edge-rep2.txt >edge-cotranslation.txt`   
 ##### step5: statistics node information
-`module load R/3.6.0; Rscript NetInfo.r edge-cotranslation.txt nodeinfo-cotranslation.txt sd-cotranslation.txt transitivity-cotranslation.txt; ##NetInfo.r in code folder`
+`module load R/3.6.0;`  
+`Rscript NetInfo.r edge-cotranslation.txt nodeinfo-cotranslation.txt sd-cotranslation.txt transitivity-cotranslation.txt` 
 ##### step6: divide modules
 `module load MCL/14-137; mcl edge-cotranslation-abc.txt --abc -o module-cotranslation.txt`
 
 ### Net3: Co-expression network with ncRNA(not only including mRNA, but also lncRNA, small RNA cluster, circRNA, fusionRNA) 
-##### step1: construct network by one step and using average expression(recommend)  
-`module load R/3.6.0; Rscript wgcna-edge.r rnawithnc-exp.txt edge-coexpressionwithncrna.txt; ##rnawithnc-exp.txt in the data folder`  
+##### step1: construct network by one step
+`module load R/3.6.0; Rscript wgcna-edge.r rnawithnc-exp.txt edge-coexpressionwithncrna.txt`  
 ##### step2: statistics node information
 `module load R/3.6.0; Rscript NetInfo.r edge-coexpressionwithncrna.txt nodeinfo-coexpressionwithncrna.txt sd-coexpressionwithncrna.txt transitivity-coexpressionwithncrna.txt`
 ##### step3: divide modules
@@ -49,7 +66,7 @@ Six different omics networks were constructed. All edge files containing gene-ge
 
 ### Net5: Slim-IntegrativeOmics(high confidence and low confidence)  
 ##### step1: statistics node information  
-Integrates all gene-gene pairs of each omics(ChIA-PET network, slim co-expression network, co-translation network and interactome). The final weight is the sum of the weights of each omics. Final edge file were named edge-slimio-highconf.txt and edge-slimio-lowconf.txt, stored in XXX.
+Integrates all gene-gene pairs of each omics, ChIA-PET network, slim co-expression network, co-translation network and interactome (high and low confidences). Final output files (edge-slimio-highconf.txt and edge-slimio-lowconf.txt) were uploaded into OMIX with accession number OMIX001131.
 ##### step2: statistics node information
 `module load R/3.6.0; Rscript NetInfo.r edge-slimio-highconf.txt nodeinfo-slimio-highconf.txt sd-slimio-highconf.txt transitivity-slimio-highconf.txt`  
 `module load R/3.6.0; Rscript NetInfo.r edge-slimio-lowconf.txt nodeinfo-slimio-lowconf.txt sd-slimio-lowconf.txt transitivity-slimio-lowconf.txt`  
@@ -59,11 +76,11 @@ Integrates all gene-gene pairs of each omics(ChIA-PET network, slim co-expressio
 
 ### Net6: IntegrativeOmics with ncRNAs(high confidence and low confidence)  
 ##### step1: statistics node information  
-Integrates all gene-gene pairs of each omics(ChIA-PET network, co-expression network with ncRNA, co-translation network and interactome). The final weight is the sum of the weights of each omics. Final edge file were named edge-iowithncrna-highconf.txt and edge-iowithncrna-lowconf.txt, stored in XXX.
+Integrates all gene-gene pairs of each omics, ChIA-PET network, co-expression network with ncRNA, co-translation network and interactome (high and low confidences). Final output files (edge-iowithncrna-highconf.txt and edge-iowithncrna-lowconf.txt) were uploaded into OMIX with accession number OMIX001131.
 ##### step2: statistics node information
-`module load R/3.6.0; Rscript NetInfo.r edge-iowithncrna-highconf.txt nodeinfo-iowithncrna-highconf.txt sd-iowithncrna-highconf.txt transitivity-iowithncrna-highconf.txt`  
-`module load R/3.6.0; Rscript NetInfo.r edge-iowithncrna-lowconf.txt nodeinfo-iowithncrna-lowconf.txt sd-iowithncrna-lowconf.txt transitivity-iowithncrna-lowconf.txt`  
+`module load R/3.6.0;`  
+`Rscript NetInfo.r edge-iowithncrna-highconf.txt nodeinfo-iowithncrna-highconf.txt sd-iowithncrna-highconf.txt transitivity-iowithncrna-highconf.txt`  
+`Rscript NetInfo.r edge-iowithncrna-lowconf.txt nodeinfo-iowithncrna-lowconf.txt sd-iowithncrna-lowconf.txt transitivity-iowithncrna-lowconf.txt` 
 ##### step3: divide modules
 `module load MCL/14-137; mcl edge-iowithncrna-highconf-abc.txt --abc -o module-iowithncrna-highconf.txt`  
 `module load MCL/14-137; mcl edge-iowithncrna-lowconf-abc.txt --abc -o module-iowithncrna-lowconf.txt`  
-
