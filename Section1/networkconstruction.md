@@ -1,7 +1,7 @@
 #### Six different type networks (Slim co-expression network, Co-translation network, Co-expression network with ncRNA, Interactome, Slim-IntegrativeOmics, IntegrativeOmics with ncRNAs) were constructed.  
-#### Input files (log-transformed expression matrixs: totalrna-log-rep1.txt, totalrna-log-rep2.txt, ribo-log-rep1.txt, ribo-log-rep2.txt, rnawithnc-exp.txt) for co-expression and co-translation network were uploaded into Section1/data. Input files (edge-proteome-highconf.txt, edge-proteome-lowconf.txt) for Interactome were uploaded into Section0/data. 
-#### Final output edge files were stored into OMIX(https://ngdc.cncb.ac.cn/omix/) with accession number OMIX001131.  
-#### Some network properties were calculated: node information file (uploaded into Section1/data), module file (uploaded into Section1/data), shortest distance file (in OMIX with accession number OMIX001131).  
+#### Input files (log-transformed expression matrixs: totalrna-log-rep1.txt, totalrna-log-rep2.txt, ribo-log-rep1.txt, ribo-log-rep2.txt, rnawithnc-exp.txt) for co-expression and co-translation network and input files (edge-proteome-highconf.txt, edge-proteome-lowconf.txt) for Interactome were uploaded into Section0/data. 
+#### All final output edge files were stored into OMIX(https://ngdc.cncb.ac.cn/omix/) with accession number OMIX001131.  
+#### Some network properties were calculated: node information files (uploaded into Section1/data), module files (uploaded into Section1/data), shortest distance files (in OMIX with accession number OMIX001131).  
 #### Code in this pipeline were uploaded into Section1/code.
 ### Net1: Slim co-expression network(only containing annotated genes)  
 ##### step1: calculate soft thresholding  
@@ -16,7 +16,7 @@
 `module load R/3.6.0;`  
 `Rscript totalrna-edge.r totalrna-log-rep1.txt 18 totalrna-edge-rep1.txt;`  
 `Rscript totalrna-edge.r totalrna-log-rep2.txt 12 totalrna-edge-rep2.txt`  
-##### step4: obtain overlapped gene pairs as final co-expression network's edges  
+##### step4: obtain overlapped gene-gene pairs as final co-expression network's edges  
 `perl network-overlap.pl totalrna-edge-rep1.txt totalrna-edge-rep2.txt >edge-slimcoexpression.txt`   
 ##### step5: statistics node information
 `module load R/3.6.0;`  
