@@ -1,9 +1,11 @@
 ##### 1. Statistics for Fig. 2b
 `perl module.pl module-slimcoexpression.txt module-cotranslation.txt module-proteome-highconf.txt`  
-##module.pl was in code folder. Five files of duplicate genes(Zma.$i.txt) and a random pair file, para_random.txt were in data folder. Three module files from three omics were in chapter1/data folder.
+##The code module.pl was in Section2/code.  
+##Intermediate files of this code were five duplicate genes (Section2/duplicategenes/Zma.dispersed.txt, Section2/duplicategenes/Zma.proximal.txt, Section2/duplicategenes/Zma.tandem.txt, Section2/duplicategenes/Zma.transposed.txt and Section2/duplicategenes/Zma.wgd.txt) and a random pair file (Section2/data/para_random.txt).  
+##Input module files were in Section1/data.
 ##### 2. Statistics for Fig. 2c
 `perl duplicate-SD.pl sd-slimcoexpression.txt sd-cotranslation.txt sd-PPIs-highconf.txt`  
-##Three shortest distance files from three omics were in OMIX(https://ngdc.cncb.ac.cn/omix/) which accession number was OMIX001131.
+##Three shortest distance files from three omics were in OMIX (https://ngdc.cncb.ac.cn/omix/) which accession number was OMIX001131.
 ##### 3. Statistics for Fig. 2d-2g
 `for i in $(cat id.txt);do perl genecommon.pl edge-slimcoexpression.txt nodeinfo-slimcoexpression.txt Zma.$i.txt >trans-$i.txt;  done`  
 `for i in $(cat id.txt);do perl genecommon.pl edge-cotranslation.txt nodeinfo-cotranslation.txt Zma.$i.txt >ribo-$i.txt; done`   
