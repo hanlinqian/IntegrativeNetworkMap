@@ -1,6 +1,9 @@
-##### 1. Statistics and visual code for Fig. 3b and Extended Data Fig. 14
-`awk -F '\t' '{if ($2==1) print $0}' 00sbicolor_maize-omics.txt |cut -d " " -f 8-10 >1.txt ##Obtain the information of chromosome 1, and 1 in 1.txt means that the degree of maize1 is greater than that of maize2.`  
-`perl slindingwindow.pl 10 100 >chr1.txt ##slindingwindow.pl was in code folder, and 00sbicolor_maize-omics was in data folder`  
+##### Statistics and visual code for Fig. 3b and Extended Data Fig. 14
+step1:  
+`awk -F '\t' '{if ($2==1) print $0}' 00sbicolor_maize-omics.txt |cut -d " " -f 8-10 >1.txt` ##Obtain information of chromosome 1  
+step2:  
+`perl slindingwindow.pl 10 100 >chr1.txt` ##slindingwindow.pl Section3/code and 00sbicolor_maize-omics Section3/data  
+step3: 
 ```R
 ##figure by R, ##chr1.txt was in data folder
 a <- read.table("chr1.txt",header = T,sep = "\t")
