@@ -1,6 +1,6 @@
 ##### Statistics and visual code for Fig. 3b and Extended Data Fig. 14
 step1:  
-`awk -F '\t' '{if ($2==1) print $0}' 00sbicolor_maize-omics.txt |cut -d " " -f 8-10 >1.txt` ##Obtain information of chromosome 1  
+`awk -F '\t' '{if ($2==1) print $0}' 00sbicolor_maize-omics.txt |cut -d " " -f 8-10 >1.txt` ##Obtain information of chromosome1  
 step2:  
 `perl slindingwindow.pl 10 100 >chr1.txt` ##slindingwindow.pl Section3/code and 00sbicolor_maize-omics Section3/data  
 step3: 
