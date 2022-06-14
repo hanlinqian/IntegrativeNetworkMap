@@ -13,7 +13,7 @@
 `perl dabsab.pl trans >trans-type.txt`  
 `perl dabsab.pl ribo >ribo-type.txt`  
 `perl dabsab.pl ppi >ppi-type.txt`   
-##Input edge files were in OMIX(https://ngdc.cncb.ac.cn/omix/) with accession number OMIX001131; input node information files were in Section1/data; code genecommon.pl and dabsab.pl were in Section2/code.  
+##Input edge files were in OMIX(https://ngdc.cncb.ac.cn/omix/) with accession number OMIX001131; input node information files were in Section1/data; input id.txt was in Section2/data; code genecommon.pl and dabsab.pl were in Section2/code.  
 ##### 4. Visual code for Fig. 2g and Extended Data Fig. 13
 ```R
 library(ggalluvial)
