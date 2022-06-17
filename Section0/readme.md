@@ -5,3 +5,4 @@ This section is about identifying and quantifing mRNAs, lncRNAs, circRNAs and sm
 ##### pipeline-ribo.md: Pipeline of calculating expression of RNAs being translated by Ribo-seq;
 ##### pipeline-srnacluster.md: Pipeline of identifying and quantifing small RNA clusters by sRNA-seq;
 ##### pipeline-totalrna.md: Pipeline of calculating expression of total RNAs by mRNA-seq.
+##### The code and data involved in these pipeline were stored in Section0/data and Section0/code.
