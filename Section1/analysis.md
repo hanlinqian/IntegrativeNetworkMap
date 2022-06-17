@@ -9,7 +9,7 @@ upset(a, queries = list(list(query=intersects, params="Co-expression",color="#CC
 ```R
 ##R
 library(ComplexHeatmap)
-a <- read.table("heatmap-mrna.txt",header = T,sep = "\t",check.names = F,row.names = 1) ##heatmap-mrna.txt in data folder
+a <- read.table("heatmap-mrna.txt",header = T,sep = "\t",check.names = F,row.names = 1) ##heatmap-mrna.txt was in Section1/data
 Heatmap(a,cluster_rows = T,cluster_columns = T,show_column_names = F,show_row_names = F)
 ```
 ##### 3. Visual code for Extended Data Fig. 2c
