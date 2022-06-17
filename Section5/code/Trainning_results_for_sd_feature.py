@@ -103,7 +103,7 @@ class machinelearning():
         Truesample = np.zeros(randomnum)
         Falsesample = np.zeros(randomnum)
 
-        for i in tqdm.tqdm(range(randomnum)):  #####重复做
+        for i in tqdm.tqdm(range(randomnum)):
             x = data[:, 1:]
             y = data[:, 0]
             _y = y
@@ -138,7 +138,7 @@ class machinelearning():
             model = keras.Model( inputs3,out)
             model.compile(optimizer='rmsprop', loss=binary_crossentropy, metrics=['accuracy'])
             from keras.callbacks import ModelCheckpoint
-            filepath = 'nn.h5'  ####原最佳模型7dimmodelATT_TCNnew.h5
+            filepath = 'nn.h5'
             checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
