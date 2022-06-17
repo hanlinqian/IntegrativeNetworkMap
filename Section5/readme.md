@@ -25,3 +25,6 @@ Training_results_for_different_features.py was in Section5/code.
 
 #### 4. Result prediction and feature importance calculation
 predresult.py was in Section5/code.
+
+#### 5. Code for ROC-AUC figure and PR-curve
+Draw_picture.py was in Section5/code.
