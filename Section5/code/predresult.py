@@ -126,7 +126,7 @@ class machinelearning():
         model = keras.Model([inputs1, inputs2, inputs3], out)
         model.compile(optimizer='adam', loss=binary_crossentropy, metrics=['accuracy'])
         from keras.callbacks import ModelCheckpoint
-        filepath = 'nn677.h5'  ####原最佳模型7dimmodelATT_TCNnew.h5
+        filepath = 'nn677.h5'
         checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
