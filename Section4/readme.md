@@ -1,1 +1,3 @@
-This section is about network reconstruction and p value calculation.
+This section is about prediction gene function, reconstruction regulating networks and calculation network cluster's significance.
+##### analysis.md: Data Analysis and visualization code for Section4;
+##### The code and data involved in analysis.md were stored in Section4/code and Section4/data.
