@@ -10,11 +10,10 @@
 ##### step3: identify circRNA and calculate read count by CIRCexplorer2  
 `module load SAMtools/1.9; samtools index -b tophat-fusion/fusion-$i/accepted_hits.bam ##build bam index`  
 `CIRCexplorer2 parse --pe -t TopHat-Fusion fusion-$i/accepted_hits.bam > CIRCexplorer2_parse-$i.log;`  
-`CIRCexplorer2 annotate -r b734.40/4.40.gpd -g Zea_mays.AGPv4.dna.toplevel.fa -b back_spliced_junction.bed -o circularRNA_known-$i.txt; ##starting position of bed file is 0, while gff3 file is 1`
+`CIRCexplorer2 annotate -r b734.40/4.40.gpd -g Zea_mays.AGPv4.dna.toplevel.fa -b back_spliced_junction.bed -o circularRNA_known-$i.txt; ##start position of bed file is 0 while gff3 file is 1`
 
 ##### step4: merge all the tissues' read count to one file  
-`perl mergetpm.pl > 21+21circrna.tpm`  
-The code refers to mergetpm.pl in the code folder, and slightly modified according to the array location.
+`perl mergetpm.pl > 21+21circrna.tpm`  ##mergetpm.pl refers to Section0/code/mergetpm.pl with slight modifications
 
 ##### step5: transfer read count to TPM(CPM)  
-According to the formula of CPM.
+According to the formula of CPM, CPM= A/mapped reads*1000000 (A is the read count mapped to a gene).
