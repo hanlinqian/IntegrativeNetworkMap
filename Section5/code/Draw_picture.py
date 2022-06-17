@@ -230,7 +230,7 @@ def tune_PR_curve(x,y):
     # save picture
     plt.show()
     plt.clf()
-data=np.array(pd.read_excel('68dim\\train.xlsx'))
+data=np.array(pd.read_excel('train.xlsx'))
 x = data[:, 1:]
 y = data[:, 0].astype(np.int)
 # tune_PR_curve(x,y)
