@@ -28,3 +28,6 @@ predresult.py was in Section5/code.
 
 #### 5. Code for ROC-AUC figure and PR-curve
 Draw_picture.py was in Section5/code.
+
+#### 6. Input data
+The input files train.xlsx and test.xlsx involved in the machine learning calculation were uploaded into Section5/data.
