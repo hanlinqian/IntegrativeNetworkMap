@@ -6,4 +6,4 @@ All analysis was divided into 6 sections:
 ##### Section2: Clustering and assessing functional divergence of duplicated genes from the network perspective.
 ##### Section3: Asymmetric regulatory divergence between the two maize subgenomes.
 ##### Section4: Prediction gene function and reconstruction regulating networks underlying complex traits.
-##### Section5: 
+##### Section5: The integrative network map boosts prediction of FT-genes by machine learning.
