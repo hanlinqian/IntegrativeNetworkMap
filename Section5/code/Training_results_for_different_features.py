@@ -106,7 +106,7 @@ class machinelearning():
 
         Falsesample = np.zeros(randomnum)
 
-        for i in tqdm.tqdm(range(randomnum)):  #####重复做
+        for i in tqdm.tqdm(range(randomnum)):
             x = data[:, 1:]
             y = data[:, 0]
             if name == 'allfeature':
@@ -192,7 +192,7 @@ class machinelearning():
                 model = keras.Model([inputs1, inputs2, inputs3], out)
                 model.compile(optimizer='rmsprop', loss=binary_crossentropy, metrics=['accuracy'])
                 from keras.callbacks import ModelCheckpoint
-                filepath = 'nn.h5'  ####原最佳模型7dimmodelATT_TCNnew.h5
+                filepath = 'nn.h5'
                 checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
@@ -236,7 +236,7 @@ class machinelearning():
                 model = keras.Model(inputs1, out)
                 model.compile(optimizer='rmsprop', loss=binary_crossentropy, metrics=['accuracy'])
                 from keras.callbacks import ModelCheckpoint
-                filepath = 'nn.h5'  ####原最佳模型7dimmodelATT_TCNnew.h5
+                filepath = 'nn.h5'
                 checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
@@ -278,7 +278,7 @@ class machinelearning():
                 model.compile(optimizer='rmsprop', loss=binary_crossentropy, metrics=['accuracy'])
                 model.summary()
                 from keras.callbacks import ModelCheckpoint
-                filepath = 'nn.h5'  ####原最佳模型7dimmodelATT_TCNnew.h5
+                filepath = 'nn.h5'
                 checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
@@ -321,7 +321,7 @@ class machinelearning():
                 model.compile(optimizer='rmsprop', loss=binary_crossentropy, metrics=['accuracy'])
 
                 from keras.callbacks import ModelCheckpoint
-                filepath = 'nn.h5'  ####原最佳模型7dimmodelATT_TCNnew.h5
+                filepath = 'nn.h5'
                 checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
