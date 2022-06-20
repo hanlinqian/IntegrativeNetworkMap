@@ -1,5 +1,5 @@
 This section is about predicting genes of flowering time by machine learning.
-
+#### The input files train.xlsx and test.xlsx involved in the following analysis were uploaded into Section5/data.
 #### 1. Computation of node similarity in a network
 `perl similarity.pl edge-proteome-highconf.txt nodeinfo-proteome-highconf.txt traingene-34pos+34neg.txt 5 8 >out.txt`  
 ##similarity.pl was in Section5/code;  
@@ -28,6 +28,3 @@ predresult.py was in Section5/code.
 
 #### 5. Code for ROC-AUC figure and PR-curve
 Draw_picture.py was in Section5/code.
-
-#### 6. Input data
-The input files train.xlsx and test.xlsx involved in the machine learning were uploaded into Section5/data.
