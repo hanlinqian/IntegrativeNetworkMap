@@ -1,6 +1,6 @@
 # IntegrativeNetworkMap
-We generated a maize network map that integrates genomic interactions, transcriptomic co-expression networks, translatomic co-translation networks and protein-protein interactions across maize development.
-All analysis was divided into 6 sections:  
+We generated a maize network map that integrates genomic interactions, transcriptomic co-expression networks, translatomic co-translation networks and protein-protein interactions across maize development. We deposited all the raw data in the National Genomics Data Center (https://bigd.big.ac.cn/) with a GSA accession number PRJCA008477, which will be released after the manuscript is accepted.  
+##### All analysis was divided into 6 sections:  
 ##### Section0: Identification and quantification of mRNAs, lncRNAs, circRNAs and small RNAs; calculation of protein-coding RNA expression by Ribo-seq; and acquisition of protein-protein interactions.
 ##### Section1: Construction of six different type networks (Slim co-expression network, Co-translation network, Co-expression network with ncRNA, Interactome, Slim-IntegrativeOmics, IntegrativeOmics with ncRNAs) and statistics of network properties.
 ##### Section2: Clustering and assessing functional divergence of duplicated genes from the network perspective.
