@@ -1,7 +1,7 @@
 #### Six different type networks (Slim co-expression network, Co-translation network, Co-expression network with ncRNA, Interactome, Slim-IntegrativeOmics, IntegrativeOmics with ncRNAs) were constructed.  
 #### Input files (log-transformed expression matrixs: totalrna-log-rep1.txt, totalrna-log-rep2.txt, ribo-log-rep1.txt, ribo-log-rep2.txt, rnawithnc-exp.txt) for co-expression and co-translation network and input files (edge-proteome-highconf.txt, edge-proteome-lowconf.txt) for Interactome were uploaded into Section0/data. 
 #### All final output edge files were stored into NCBI (https://www.ncbi.nlm.nih.gov/geo/) under GEO accession number GSE199932.  
-#### Some network properties were calculated: node information files (uploaded into Section1/data), module files (uploaded into Section1/data), shortest distance files (in OMIX with accession number OMIX001131).  
+#### Network properties were calculated: node information files (uploaded into Section1/data), module files (uploaded into Section1/data), shortest distance files (in GEO with accession number GSE199932).  
 #### Code in this pipeline were uploaded into Section1/code.
 ### Net1: Slim co-expression network(only containing annotated genes)  
 ##### step1: calculate soft thresholding  
