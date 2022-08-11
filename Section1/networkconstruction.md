@@ -66,7 +66,7 @@
 
 ### Net5: Slim-IntegrativeOmics(high confidence and low confidence)  
 ##### step1: statistics node information  
-Integrates all gene-gene pairs of each omics, ChIA-PET network, slim co-expression network, co-translation network and interactome (high and low confidences). Final output files (edge-slimio-highconf.txt and edge-slimio-lowconf.txt) were uploaded into OMIX with accession number OMIX001131.
+Integrates all gene-gene pairs of each omics, ChIA-PET network, slim co-expression network, co-translation network and interactome (high and low confidences). Final output files (edge-slimio-highconf.txt and edge-slimio-lowconf.txt) were uploaded into GEO with accession number GSE199932.
 ##### step2: statistics node information
 `module load R/3.6.0; Rscript NetInfo.r edge-slimio-highconf.txt nodeinfo-slimio-highconf.txt sd-slimio-highconf.txt transitivity-slimio-highconf.txt`  
 `module load R/3.6.0; Rscript NetInfo.r edge-slimio-lowconf.txt nodeinfo-slimio-lowconf.txt sd-slimio-lowconf.txt transitivity-slimio-lowconf.txt`  
@@ -76,7 +76,7 @@ Integrates all gene-gene pairs of each omics, ChIA-PET network, slim co-expressi
 
 ### Net6: IntegrativeOmics with ncRNAs(high confidence and low confidence)  
 ##### step1: statistics node information  
-Integrates all gene-gene pairs of each omics, ChIA-PET network, co-expression network with ncRNA, co-translation network and interactome (high and low confidences). Final output files (edge-iowithncrna-highconf.txt and edge-iowithncrna-lowconf.txt) were uploaded into OMIX with accession number OMIX001131.
+Integrates all gene-gene pairs of each omics, ChIA-PET network, co-expression network with ncRNA, co-translation network and interactome (high and low confidences). Final output files (edge-iowithncrna-highconf.txt and edge-iowithncrna-lowconf.txt) were uploaded into GEO with accession number GSE199932.
 ##### step2: statistics node information
 `module load R/3.6.0;`  
 `Rscript NetInfo.r edge-iowithncrna-highconf.txt nodeinfo-iowithncrna-highconf.txt sd-iowithncrna-highconf.txt transitivity-iowithncrna-highconf.txt`  
