@@ -9,6 +9,7 @@ import joblib
 from sklearn.metrics import (accuracy_score, auc, f1_score, make_scorer,
                              precision_score, recall_score, roc_auc_score,
                              roc_curve,precision_recall_curve)
+import os
 from keras.layers import *
 from imblearn.over_sampling import  ADASYN
 import tqdm
@@ -19,6 +20,7 @@ import  matplotlib.pyplot as plt
 from xgboost import XGBClassifier
 from sklearn.metrics import confusion_matrix
 from plotnine import *
+from sklearn.impute import KNNImputer
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -108,6 +110,8 @@ class machinelearning():
 
         for i in tqdm.tqdm(range(randomnum)):
             x = data[:, 1:]
+            imputer = KNNImputer()
+            x1 = imputer.fit_transform(x[:,1:])
             y = data[:, 0]
             if name == 'allfeature':
                 _y = y
@@ -159,6 +163,9 @@ class machinelearning():
 
             Truesample[i] = sum(test_y == 1)
             Falsesample[i] = sum(test_y == 0)
+            imputer = KNNImputer()
+            train_x = imputer.fit_transform(train_x)
+            test_x=imputer.fit_transform(test_x)
 
             if name == 'allfeature':
                 trans_x = train_x[:, int(0.8 * len(y)+4):int(0.8 * len(y)+35)]
@@ -193,6 +200,10 @@ class machinelearning():
                 model.compile(optimizer='rmsprop', loss=binary_crossentropy, metrics=['accuracy'])
                 from keras.callbacks import ModelCheckpoint
                 filepath = 'nn.h5'
+                isExists = os.path.exists('model')
+                if not isExists:
+                    os.mkdir('model')
+                    print('model'+'创建成功')
                 checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
@@ -237,6 +248,9 @@ class machinelearning():
                 model.compile(optimizer='rmsprop', loss=binary_crossentropy, metrics=['accuracy'])
                 from keras.callbacks import ModelCheckpoint
                 filepath = 'nn.h5'
+                isExists = os.path.exists('model')
+                if not isExists:
+                    os.mkdir('model')
                 checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
@@ -279,6 +293,9 @@ class machinelearning():
                 model.summary()
                 from keras.callbacks import ModelCheckpoint
                 filepath = 'nn.h5'
+                isExists = os.path.exists('model')
+                if not isExists:
+                    os.mkdir('model')
                 checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
@@ -321,7 +338,10 @@ class machinelearning():
                 model.compile(optimizer='rmsprop', loss=binary_crossentropy, metrics=['accuracy'])
 
                 from keras.callbacks import ModelCheckpoint
-                filepath = 'nn.h5'
+                filepath = 'model\\nn.h5'
+                isExists = os.path.exists('model')
+                if not isExists:
+                    os.mkdir('model')
                 checkpoint = ModelCheckpoint(filepath,
                                              monitor='val_loss',
                                              verbose=0,
