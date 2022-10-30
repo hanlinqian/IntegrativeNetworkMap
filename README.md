@@ -7,3 +7,5 @@ We generated a maize network map that integrates genomic interactions, transcrip
 ##### Section3: Asymmetric regulatory divergence between the two maize subgenomes.
 ##### Section4: Prediction gene function and reconstruction regulating networks underlying complex traits.
 ##### Section5: The integrative network map boosts prediction of FT-genes by machine learning.
+
+#### DOI: 10.5281/zenodo.7263543
